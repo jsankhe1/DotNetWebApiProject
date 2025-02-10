@@ -14,15 +14,11 @@ public class OrderDbContext : DbContext
     
     DbSet<ApplicationCore.Entities.Order> Orders { get; set; }
     DbSet<OrderDetails> OrderDetails { get; set; }
-    DbSet<Customer> Customers { get; set; }
     
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ApplicationCore.Entities.Order>()
-            .HasOne(o => o.Customer)
-            .WithMany(c => c.Orders)
-            .HasForeignKey(o => o.CustomerId);
+
 
         modelBuilder.Entity<OrderDetails>()
             .HasOne(od => od.Order)

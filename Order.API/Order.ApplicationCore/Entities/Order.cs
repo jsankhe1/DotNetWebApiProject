@@ -16,6 +16,5 @@ public class Order
     [Required(ErrorMessage = "Bill Amount can't be blank")]public decimal? BillAmount { get; set; }
 
     // Navigation Properties
-    public Customer Customer { get; set; } = new Customer();
     public ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
 }
