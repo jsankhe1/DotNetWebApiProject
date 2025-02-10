@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Order.Infrastructure.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<OrderDbContext>(option =>
+    option.UseSqlServer(builder.Configuration.GetConnectionString("EcommOrders"))); //Injecting DbContext.
 
 var app = builder.Build();
 
